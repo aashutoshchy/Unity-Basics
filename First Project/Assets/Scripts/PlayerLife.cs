@@ -3,6 +3,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
+    void Update()
+    {
+       if (transform.position.y < -15f)
+        {
+            Die();
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Enemy Body"))
