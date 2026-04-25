@@ -3,9 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
+    bool dead = false;
     void Update()
     {
-       if (transform.position.y < -15f)
+       if (transform.position.y < -15f && !dead)
         {
             Die();
         }
@@ -24,6 +25,7 @@ public class PlayerLife : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<playerMovement>().enabled = false;
         Invoke(nameof(ReloadLevel), 1.3f);
+        dead = true;
     }
 
     void ReloadLevel()
