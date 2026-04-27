@@ -10,6 +10,8 @@ public class playerMovement : MonoBehaviour
     [SerializeField] Transform groundCheck;
     [SerializeField] LayerMask ground;
 
+    [SerializeField] AudioSource jumpSound;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -31,6 +33,7 @@ public class playerMovement : MonoBehaviour
     void Jump()
     {
         rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+        jumpSound.Play();
     }
 
     void OnCollisionEnter(Collision collision)
